@@ -4,7 +4,7 @@ from requests_html import HTMLSession
 class Scraper():
 
 	def getHome(self):
-		urls = ['https://dressupdarling.online','https://hajimetenogal.com']
+		urls = ['https://dressupdarling.online','https://hajimetenogal.com','https://higewosoru.com','https://bloom-into-you.com','https://hitomichanmanga.online','https://domestic-na-kanojo.com/','https://wotakoi-manga.com/']
 
 		s=HTMLSession()
 		datas = []
@@ -12,9 +12,15 @@ class Scraper():
 			r = s.get(u)
 			rawTitle=u.split('//')[1].split('.')[0]
 			if rawTitle == 'hajimetenogal':
-				itemBanner= 'https://hajimetenogal.com/wp-content/uploads/2021/06/New-Project-39.jpg'
+				itemBanner= 'https://hajimetenogal.com/wp-content/uploads/2022/05/New-Project-29.jpg'
 			elif rawTitle == 'dressupdarling':
-			 	itemBanner = 'https://dressupdarling.online/wp-content/uploads/2021/06/New-Project-49.jpg'
+			 	itemBanner = 'https://dressupdarling.online/wp-content/uploads/2022/08/header.png'
+			elif rawTitle == 'higewosoru':
+			 	itemBanner = 'https://higewosoru.com/wp-content/uploads/2021/06/i-shaved.-then-i-brought-a-high-school-girl-home-1.jpg'
+			elif rawTitle == 'bloom-into-you':
+			 	itemBanner = 'https://bloom-into-you.com/wp-content/uploads/2021/05/Bloom-Into-You.jpg'
+			elif rawTitle == 'hitomichanmanga':
+			 	itemBanner = 'https://bloom-into-you.com/wp-content/uploads/2021/05/Bloom-Into-You.jpg'
 			 # rawGenre = r.html.find('ul > li:nth-child(3) > a')
 			 # genre=[]
 			 # for g in rawGenre:
@@ -25,6 +31,7 @@ class Scraper():
 				'url':u,
 				'path':rawTitle,
 				'itemBanner':itemBanner,
+				# 'itemBanner':r.html.find('div.site-header',first=True).background,
 				'itemThumb' : r.html.find('figure.wp-block-gallery img.alignleft',first=True).attrs['src'],
 				'title' : r.html.find('header > h1.entry-title',first=True).text
 				# 'genre': genre
@@ -40,8 +47,21 @@ class Scraper():
 			url = 'https://dressupdarling.online'
 		elif(u =='hajimetenogal'):
 			url = 'https://hajimetenogal.com'
+		elif(u =='higewosoru'):
+			url = 'https://higewosoru.com'
+		elif(u =='bloom-into-you'):
+			url = 'https://bloom-into-you.com'
+		elif(u =='hitomichanmanga'):
+			url = 'https://hitomichanmanga.online'
+		elif(u =='domestic-na-kanojo'):
+			url = 'https://domestic-na-kanojo.com'
+		elif(u =='wotakoi-manga'):
+			url = 'https://wotakoi-manga.com'
 		# url = 'https://dressupdarling.online'
 		# url = 'https://hajimetenogal.com'
+			
+			
+			
 
 		s=HTMLSession()
 		r=s.get(url)
@@ -146,6 +166,126 @@ class Scraper():
 			
 			print(chapterItems)
 			return chapterItems
+
+		elif u == 'higewosoru':
+			url = f'https://higewosoru.com/manga/i-shaved-then-i-brought-a-high-school-girl-home-chapter-{c}'
+			s=HTMLSession()
+			r=s.get(url)
+			print(r.status_code)
+
+			chapterItems = []
+
+			
+			chapter = r.html.find('div.separator')
+			
+		
+			if not chapter:
+				item = r.html.find('div.wp-block-image>figure.aligncenter>img',first=True)
+				# chapterItems.append(r.html.find('div.wp-block-image>figure.aligncenter>img').attrs['src'])
+					
+				chapterItems.append(item.attrs['src'])
+			for  c in chapter:	
+				item = c.find('img.aligncenter',first=True) 	
+				chapterItems.append(item.attrs['src']);
+
+			return chapterItems
+
+		elif u == 'bloom-into-you':
+			url = f'https://bloom-into-you.com/manga/bloom-into-you-chapter-{c}'
+			s=HTMLSession()
+			r=s.get(url)
+			print(r.status_code)
+
+			chapterItems = []
+
+			
+			chapter = r.html.find('div.separator')
+			
+		
+			if not chapter:
+				item = r.html.find('div.wp-block-image>figure.aligncenter>img',first=True)
+				# chapterItems.append(r.html.find('div.wp-block-image>figure.aligncenter>img').attrs['src'])
+					
+				chapterItems.append(item.attrs['src'])
+			for  c in chapter:	
+				item = c.find('img.aligncenter',first=True) 	
+				chapterItems.append(item.attrs['src']);
+
+			return chapterItems
+
+
+		elif u == 'hitomichanmanga':
+			url = f'https://hitomichanmanga.online/manga/hitomi-chan-is-shy-with-strangers-chapter-{c}'
+			s=HTMLSession()
+			r=s.get(url)
+			print(r.status_code)
+
+			chapterItems = []
+
+			
+			chapter = r.html.find('div.separator')
+			
+		
+			if not chapter:
+				item = r.html.find('div.wp-block-image>figure.aligncenter>img',first=True)
+				# chapterItems.append(r.html.find('div.wp-block-image>figure.aligncenter>img').attrs['src'])
+					
+				chapterItems.append(item.attrs['src'])
+			for  c in chapter:	
+				item = c.find('img.aligncenter',first=True) 	
+				chapterItems.append(item.attrs['src']);
+
+			return chapterItems
+
+
+		elif u == 'domestic-na-kanojo':
+			url = f'https://domestic-na-kanojo.com/manga/domestic-na-kanojo-chapter-{c}'
+			s=HTMLSession()
+			r=s.get(url)
+			print(r.status_code)
+
+			chapterItems = []
+
+			
+			chapter = r.html.find('div.separator')
+			
+		
+			if not chapter:
+				item = r.html.find('div.wp-block-image>figure.aligncenter>img',first=True)
+				# chapterItems.append(r.html.find('div.wp-block-image>figure.aligncenter>img').attrs['src'])
+					
+				chapterItems.append(item.attrs['src'])
+			for  c in chapter:	
+				item = c.find('img.aligncenter',first=True) 	
+				chapterItems.append(item.attrs['src']);
+
+			return chapterItems
+
+
+		elif u == 'wotakoi-manga':
+			url = f'https://wotakoi-manga.com/manga/wotaku-ni-koi-wa-muzukashii-chapter-{c}'
+			s=HTMLSession()
+			r=s.get(url)
+			print(r.status_code)
+
+			chapterItems = []
+
+			
+			chapter = r.html.find('div.separator')
+			
+		
+			if not chapter:
+				item = r.html.find('div.wp-block-image>figure.aligncenter>img',first=True)
+				# chapterItems.append(r.html.find('div.wp-block-image>figure.aligncenter>img').attrs['src'])
+					
+				chapterItems.append(item.attrs['src'])
+			for  c in chapter:	
+				item = c.find('img.aligncenter',first=True) 	
+				chapterItems.append(item.attrs['src']);
+
+			return chapterItems
+
+			
 
 		
 			

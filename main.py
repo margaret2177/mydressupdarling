@@ -4,6 +4,11 @@ from  scraper import Scraper
 app = FastAPI()
 data = Scraper()
 
+
+@app.get('/')
+async def read_root():
+	return 'Hello there!'
+
 @app.get('/api/home')
 async def read_home():
 	return data.getHome()
