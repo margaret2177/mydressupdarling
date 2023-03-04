@@ -9,7 +9,7 @@ origins = [
     # "http://localhost.tiangolo.com",
     # "https://localhost.tiangolo.com",
     "",
-    "https://floating-spire-08257.herokuapp.com",
+    "https://itreads.onrender.com",
     "http://localhost:3000"
 
 ]
