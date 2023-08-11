@@ -4,7 +4,7 @@ from requests_html import HTMLSession
 class Scraper():
 
 	def getHome(self):
-		urls = ['https://dressupdarling.online','https://hajimetenogal.com','https://higewosoru.com','https://bloom-into-you.com','https://hitomichanmanga.online','https://domestic-na-kanojo.com/','https://wotakoi-manga.com/']
+		urls = ['https://w1.dressupdarling.online','https://w1.hajimetenogal.com','https://w1.higewosoru.com','https://w1.bloom-into-you.com','https://w1.hitomichanmanga.online','https://w1.domestic-na-kanojo.com/','https://w1.wotakoi-manga.com/']
 
 		s=HTMLSession()
 		datas = []
@@ -117,7 +117,7 @@ class Scraper():
 
 	def scrapedata(self, u,c):
 		if u == 'dressupdarling':
-			url = f'https://dressupdarling.online/manga/my-dress-up-darling-chapter-{c}'
+			url = f'https://w1.dressupdarling.online/manga/my-dress-up-darling-chapter-{c}'
 			s=HTMLSession()
 			r=s.get(url)
 			print(r.status_code)
@@ -140,7 +140,7 @@ class Scraper():
 			return chapterItems
 
 		elif u == 'hajimetenogal':
-			url1 = f'https://hajimetenogal.com/manga/hajimete-no-gal-chapter-{c}'
+			url1 = f'https://w1.hajimetenogal.com/manga/hajimete-no-gal-chapter-{c}'
 			url2 = f'https://hajimetenogal.com/manga/hajimete-no-gal-chapter-{c}-my-first-girlfriend-is-a-gal'
 			url = url1 if int(c)<128 else url2
 			s=HTMLSession()
@@ -168,7 +168,7 @@ class Scraper():
 			return chapterItems
 
 		elif u == 'higewosoru':
-			url = f'https://higewosoru.com/manga/i-shaved-then-i-brought-a-high-school-girl-home-chapter-{c}'
+			url = f'https://w1.higewosoru.com/manga/i-shaved-then-i-brought-a-high-school-girl-home-chapter-{c}'
 			s=HTMLSession()
 			r=s.get(url)
 			print(r.status_code)
@@ -191,7 +191,7 @@ class Scraper():
 			return chapterItems
 
 		elif u == 'bloom-into-you':
-			url = f'https://bloom-into-you.com/manga/bloom-into-you-chapter-{c}'
+			url = f'https://w1.bloom-into-you.com/manga/bloom-into-you-chapter-{c}'
 			s=HTMLSession()
 			r=s.get(url)
 			print(r.status_code)
@@ -215,7 +215,7 @@ class Scraper():
 
 
 		elif u == 'hitomichanmanga':
-			url = f'https://hitomichanmanga.online/manga/hitomi-chan-is-shy-with-strangers-chapter-{c}'
+			url = f'https://w1.hitomichanmanga.online/manga/hitomi-chan-is-shy-with-strangers-chapter-{c}'
 			s=HTMLSession()
 			r=s.get(url)
 			print(r.status_code)
@@ -239,7 +239,7 @@ class Scraper():
 
 
 		elif u == 'domestic-na-kanojo':
-			url = f'https://domestic-na-kanojo.com/manga/domestic-na-kanojo-chapter-{c}'
+			url = f'https://w1.domestic-na-kanojo.com/manga/domestic-na-kanojo-chapter-{c}'
 			s=HTMLSession()
 			r=s.get(url)
 			print(r.status_code)
@@ -263,7 +263,7 @@ class Scraper():
 
 
 		elif u == 'wotakoi-manga':
-			url = f'https://wotakoi-manga.com/manga/wotaku-ni-koi-wa-muzukashii-chapter-{c}'
+			url = f'https://w1.wotakoi-manga.com/manga/wotaku-ni-koi-wa-muzukashii-chapter-{c}'
 			s=HTMLSession()
 			r=s.get(url)
 			print(r.status_code)
